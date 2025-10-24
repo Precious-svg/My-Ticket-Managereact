@@ -33,8 +33,10 @@ const Landing = () => {
                    
                 </Card>
                 <Card bgColor='bg-pink-500'>
-                    <h4>Track</h4>
-                    <p>Visualise your tricket status and update in realtime. </p>
+                    <section>
+                        <h4>Track</h4>
+                        <p>Visualise your tricket status and update in realtime. </p>
+                    </section>
                 </Card>
                 <Card>
                     <h4>Team Collaboration</h4>
