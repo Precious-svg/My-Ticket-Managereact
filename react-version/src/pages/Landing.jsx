@@ -1,8 +1,9 @@
 import React from 'react'
 import Button from '../components/Button'
 import Card from '../components/Card'
-
+import { useNavigate} from 'react-router-dom'
 const Landing = () => {
+    const navigate = useNavigate()
   return (
     <div className='max-w-[1440px] w-full mx-auto px-2'>
         <header className='w-full mt-24'>
@@ -19,8 +20,8 @@ const Landing = () => {
            
         <main className='w-full mx-auto flex flex-col justify-center items-center mt-4'>
           <div className='flex flex-col gap-3'>
-               <Button>Get Started</Button>
-               <Button>Login</Button>
+               <Button onClick={() => navigate("/auth/signup")}>Get Started</Button>
+               <Button onClick={() => navigate("/auth/login")}>Login</Button>
           </div>
 
             {/* feature section */}

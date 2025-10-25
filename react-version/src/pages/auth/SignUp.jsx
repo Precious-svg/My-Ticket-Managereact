@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Input from '../../components/Input'
+import Button from '../../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -8,7 +10,11 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPass] = useState("")
   const [errorMsg, setErrorMsg] = useState("")
-
+  const navigate = useNavigate()
+  
+  const userData = {
+    firstName, lastName, email, password
+  }
   const isFormValid = () => {
     let valid = true;
     const errorMsgArray = []
@@ -37,6 +43,20 @@ const SignUp = () => {
 
     if(errorMsgArray.length > 0){
       setErrorMsg(prev => errorMsgArray[0])
+      valid = false
+    }
+    valid = true;
+
+  }
+
+  const handleSignup = (e) => {
+    e.preventDefault()
+
+    if(isFormValid){
+      localStorage.setItem("ticketapp_user", JSON.stringify(userData))
+      navigate('/auth/login')
+      const stored = localStorage.getItem("ticketapp_user")
+      console.log("is stored:", stored)
     }
   }
   return (
@@ -46,7 +66,7 @@ const SignUp = () => {
        </header>
 
        <main>
-          <form>
+          <form onSubmit={handleSignup}>
             <div>
               <label htmlFor='firstName'>
                 First Name
@@ -86,6 +106,11 @@ const SignUp = () => {
 
               <Input type="text" name={confirmPassword} value={confirmPassword} onChange={(e) => setConfirmPass(e.target.value)}/>
             </div>
+
+            {errorMsg && (
+              <p className='text-red'>{errorMsg}</p>
+            )}
+            <Button type="submit">Sign up</Button>
           </form>
        </main>
     </div>
