@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import Card from '../components/Card';
+import DashboardHeader from '../components/DashboardHeader';
 
 
 const Dashboard = () => {
@@ -29,28 +30,38 @@ const Dashboard = () => {
     )`
   return (
     <div className='min-h-[100vh] max-w-[1440px]'>
-        <header></header>
+        <header>
+            <DashboardHeader/>
+        </header>
 
-        <main className='w-full'>
+        <main className='w-full pt-[88px]'>
             <section>
                 <p>Welcome, {storedUserData.firstName}</p>
             </section>
 
             <section>
-                <Card>
+                <Card bgColor='#8e51ff' textColor='text-black'>
                     <p>{openPercent}%</p>
                 </Card>
 
-                <Card>
+                <Card bgColor='#009966' textColor='text-black'>
                     <p>{closedPercent}%</p>
                 </Card>
             </section>
 
-            <article className='w-[400px] h-[400px]  mx-auto'>
-                <div className='w-full h-full rounded-[50%] mx-auto'></div>
-
-                <section className='absolute top-[1/2] left-[1/2] w-[200px] h-[200px] border-2 border-pink-400 rounded-[50%] bg-white'>{totalNofTickets}</section>
+            <article className='w-[400px] h-[400px] relative mx-auto' >
+                <div className='w-full h-full rounded-[50%] flex justify-center items-center' style={{background: `${gradient}`}}>
+                    <section className=' w-[150px] h-[150px] border-2 border-pink-400 rounded-[50%] bg-white'>
+                       <p className='text-center'>{totalNofTickets}</p>
+                    </section>
+                </div>
             </article>
+
+            <section className='h-36 w-full'>
+                <Card bgColor="bg-zinc-900" className='border-dashed h-full w-[25%]'>
+                    <p className='text-2xl font-medium'>+</p>
+                </Card>
+            </section>
         </main>
     </div>
 
