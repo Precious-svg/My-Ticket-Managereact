@@ -37,14 +37,14 @@ export async function fetchOneTicket(id){
   await delay(250)
   if(id){
     const all = read()
-    const i = all.findIndex((x) => x.id === id);
+    const i = all.findIndex((x) => Number(x.id ) === Number(id));
     if (i === -1) {
       const err = new Error("Ticket not found");
       err.code = "NOT_FOUND";
       throw err;
     }
 
-    const ticket = all.filter((t) => t.id === id)
+    const ticket = all.find((t) => Number(t.id) === Number(id))
     return ticket;
   }
 }
@@ -52,7 +52,7 @@ export async function fetchOneTicket(id){
 export async function updateTicket(id, updates) {
   await delay(400);
   const all = read();
-  const i = all.findIndex((x) => x.id === id);
+  const i = all.findIndex((x) => Number(x.id) === Number(id));
   if (i === -1) {
     const err = new Error("Ticket not found");
     err.code = "NOT_FOUND";

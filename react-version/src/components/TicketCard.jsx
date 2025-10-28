@@ -15,7 +15,7 @@ export default function TicketCard({ ticket, onAdvance, onEdit, onDelete }) {
            </p>
            <div className="my-3 flex gap-4 justify-between items-center">
               <Button onClick={() => onAdvance(ticket)} color="bg-green-none" textColor="text-stone-900" className="border-1 border-white cursor-pointer">Advance</Button>
-              <Button onClick={() => onDelete(ticket)}   color="bg-red-600" className="cursor-pointer">Delete</Button>
+              <Button onClick={() => { console.log("Delete clicked for:"); onDelete()}}   color="bg-red-600" className="cursor-pointer">Delete</Button>
               <Button onClick={() => onEdit(ticket)}  color="bg-none"  textColor="text-stone-600" className="border-1 border-white cursor-pointer">Edit</Button>
              
            </div>

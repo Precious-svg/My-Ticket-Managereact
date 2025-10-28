@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
+import { useNavigate } from 'react-router-dom'
 
 
 const VALID_STATUSES = ["open", "in_progress", "closed"];
@@ -11,6 +12,7 @@ export default function TicketForm({ initial = {}, onSave, submitLabel = "Save",
   const [status, setStatus] = useState(initial.status || "open");
   const [priority, setPriority] = useState(initial.priority || "normal");
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate()
 
 
   useEffect(() => {
@@ -33,6 +35,8 @@ export default function TicketForm({ initial = {}, onSave, submitLabel = "Save",
     ev.preventDefault();
     if (!validate()) return;
     onSave({ title: title.trim(), description: description.trim(), status, priority });
+    console.log("new edit saved")
+    navigate("/all-tickets")
   }
 
   return (

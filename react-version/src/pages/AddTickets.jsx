@@ -6,17 +6,12 @@ import { useEffect, useState } from 'react';
 import { fetchOneTicket } from '../services.jsx/ticketService';
 const AddTickets = () => {
     const {id} = useParams()
+    console.log("id gotten from route:", id)
     const [edit, setEdit] = useState(false)
     const [initialData, setIsInitialData] = useState({})
     const navigate = useNavigate();
     const handleSave = (updates) => {
-        if(id){
-            const loadTicket = async() => {
-                const ticket = await fetchOneTicket()
-                setIsInitialData(ticket)
-                console.log("loaded ticket to edit:", ticket)
-            }
-            loadTicket()
+        if(edit){
             updateTicket(id, updates)
         }else{
             setIsInitialData({})
@@ -24,9 +19,16 @@ const AddTickets = () => {
             navigate("/all-tickets")
         }
     }
+    console.log("loaded ticket to edit:", initialData)
+    
     useEffect(() => {
         if(id){
             setEdit(true)
+            const loadTicket = async() => {
+                const ticket = await fetchOneTicket(id)
+                setIsInitialData(ticket)
+            }
+         loadTicket()
         }else{
             setEdit(false)
         }
