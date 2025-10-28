@@ -4,6 +4,7 @@ import { createTicket, updateTicket } from "../services.jsx/ticketService";
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchOneTicket } from '../services.jsx/ticketService';
+import showToast from '../assets/showToast'
 const AddTickets = () => {
     const {id} = useParams()
     console.log("id gotten from route:", id)
@@ -13,10 +14,14 @@ const AddTickets = () => {
     const handleSave = (updates) => {
         if(edit){
             updateTicket(id, updates)
+            showToast("Ticke Updated Succesfully", "success")
+
         }else{
             setIsInitialData({})
             createTicket(updates)
+            showToast("Ticke Created Succesfully", "success")
             navigate("/all-tickets")
+
         }
     }
     console.log("loaded ticket to edit:", initialData)

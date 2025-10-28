@@ -2,6 +2,7 @@ import React from 'react'
 import Button from '../components/Button'
 import Card from '../components/Card'
 import { useNavigate} from 'react-router-dom'
+import heroWave from '../../../assests/hero-wave.svg'
 const Landing = () => {
     const navigate = useNavigate()
   return (
@@ -25,8 +26,8 @@ const Landing = () => {
           </div>
 
             {/* feature section */}
-            <section className='w-full grid grid-cols-3 gap-2 mt-16'>
-                <Card bgColor="bg-yellow-500 flex justify-center items-center">
+            <section className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-16'>
+                <Card bgColor="bg-yellow-500 flex justify-center items-center min-h-[150px]">
                    <section className='bg-white rounded-md'>
                        <h4 className='text-black'>Create new tickets</h4>
                        <p className='text-black'>Easily add new tickets with a high level of priority. </p>
@@ -45,17 +46,8 @@ const Landing = () => {
                 </Card>
             </section>
 
-            <svg
-                className="absolute bottom-0 w-full aspect-[1440/320]"
-                viewBox="0 0 1440 320"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-               <path
-                 fill="#3b82f6"
-                  fillOpacity="1"
-                   d="M0,224L60,197.3C120,171,240,117,360,106.7C480,96,600,128,720,160C840,192,960,224,1080,224C1200,224,1320,192,1380,176L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-                ></path>
-          </svg>
+            <img src={heroWave}  alt="Hero Wave" class="absolute bottom-0 left-0 w-full"
+    />
         </main>
 
     </div>

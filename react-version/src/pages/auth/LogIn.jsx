@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 import { useNavigate } from 'react-router-dom'
-
+import showToast from '../../assets/showToast'
 const LogIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -30,10 +30,12 @@ const LogIn = () => {
             localStorage.setItem("ticketapp_session", "token@1234");
             console.log("log in successful")
             const storedToken = localStorage.getItem("ticketapp_session")
-      console.log("is stored token:", storedToken)
+           console.log("is stored token:", storedToken)
+           showToast("Log In Successful", "success")
             navigate("/dashboard")
         }else{
             console.log("Invalid email or password!")
+            showToast("Invalid email or password!", "error")
             navigate("/")
         }
        

@@ -33,9 +33,9 @@ const Dashboard = () => {
     const inprogressPercent = Math.round(safeDivide(totalNoInProgress, totalNofTickets))
 
     const gradient = `conic-gradient(
-     #00bcff 0% ${openPercent === 0 ? 0 : openPercent}%, 
-    #ffdf20 ${openPercent}%  ${inprogressPercent === 0 ? 0 : openPercent + inprogressPercent}%,
-   #00bc7d ${inprogressPercent === 0 ? 0 : inprogressPercent + closedPercent}% 100%
+    #ffdf20  0% ${openPercent === 0 ? 0 : openPercent}%, 
+   #fe9a00 ${openPercent}%  ${inprogressPercent === 0 ? 0 : openPercent + inprogressPercent}%,
+   #99a1af ${inprogressPercent === 0 ? 0 : inprogressPercent + closedPercent}% 100%
     )`
    
   return (
@@ -49,13 +49,13 @@ const Dashboard = () => {
             </section>
 
             <section className='flex justify-center items-center my-12 gap-6'>
-                <Card className="rounded-lg shadow-lg min-h-[150px] w-[280px] flex flex-col pl-3 justify-center items-start gap-4" bgColor='bg-sky-300' textColor='text-black' >
+                <Card className="rounded-lg shadow-lg min-h-[150px] w-[280px] flex flex-col pl-3 justify-center items-start gap-4" bgColor='bg-green-400' textColor='text-black' >
                     <p className="text-stone-500 text-md font-medium"> Total Number Of Opened Tickets</p>
                     <p className="text-4xl font-bold">{totalNoOfOpen}</p>
                     <p>View all open tickets</p>
                 </Card>
 
-                <Card className="rounded-lg shadow-lg min-h-[150px] w-[280px]  flex flex-col pl-3 justify-center items-start gap-4" bgColor='bg-emerald-200' textColor='text-black'>
+                <Card className="rounded-lg shadow-lg min-h-[150px] w-[280px]  flex flex-col pl-3 justify-center items-start gap-4" bgColor='bg-gray-400' textColor='text-black'>
                     <p className="text-stone-500 text-md font-medium">Total Number Of Closed Tickets</p>
                     <p  className="text-4xl font-bold">{totalNoOfClosed}</p>
                     <p>View all close tickets</p>

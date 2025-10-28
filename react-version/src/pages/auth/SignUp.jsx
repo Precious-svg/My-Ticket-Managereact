@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Input from '../../components/Input'
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
+import showToast from '../../assets/showToast';
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -54,10 +55,15 @@ const SignUp = () => {
 
     if(isFormValid){
       localStorage.setItem("ticketapp_user", JSON.stringify(userData))
+      showToast("Sign Up Successful", "success")
       navigate('/auth/login')
       const stored = localStorage.getItem("ticketapp_user")
       console.log("is stored:", stored)
+      return;
     }
+    showToast("Review the details submitted.", "error")
+    return;
+
   }
   return (
     <div>

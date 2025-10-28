@@ -3,6 +3,7 @@ import { fetchTickets } from '../services.jsx/ticketService'
 import TicketCard from '../components/TicketCard'
 import { deleteTicket, updateTicket } from '../services.jsx/ticketService'
 import { useNavigate } from 'react-router-dom'
+import showToast from '../assets/showToast'
 
 const AllTickets = () => {
     const [tickets, setTickets] = useState([])
@@ -18,6 +19,7 @@ const AllTickets = () => {
         if(stat === "open"){
             setNewStatus("in_progress")
             updateTicket(id, {status: newStatus})
+            showToast("Status Updated Successfully:", "success")
             return;
         }else{
             setNewStatus("closed")
@@ -31,6 +33,7 @@ const AllTickets = () => {
     const handleDelete = (id) => {
         setShowConfirm(true)
         setIdToDel(id)
+        showToast("You are about to delete you ticket", "warning")
     }
 
     const confirmDelete =  async () => {
