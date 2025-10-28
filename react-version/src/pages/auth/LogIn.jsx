@@ -22,7 +22,7 @@ const LogIn = () => {
 
         if(!storedData){
             console.log("{this user does not exist");
-            navigate("/");
+            navigate("/welcome");
             return;
         }
 

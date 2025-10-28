@@ -33,6 +33,22 @@ export async function createTicket(payload) {
   return t;
 }
 
+export async function fetchOneTicket(id){
+  await delay(250)
+  if(id){
+    const all = read()
+    const i = all.findIndex((x) => x.id === id);
+    if (i === -1) {
+      const err = new Error("Ticket not found");
+      err.code = "NOT_FOUND";
+      throw err;
+    }
+
+    const ticket = all.filter((t) => t.id === id)
+    return ticket;
+  }
+}
+
 export async function updateTicket(id, updates) {
   await delay(400);
   const all = read();
@@ -62,4 +78,9 @@ export async function deleteTicket(id) {
   const all = read();
   write(all.filter((t) => t.id !== id));
   return true;
+}
+
+export async function logout(){
+  await delay(200);
+  localStorage.removeItem("ticketapp_session")
 }
